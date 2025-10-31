@@ -1,16 +1,98 @@
-# React + Vite
+🧭 Custom React Router (Without React Router Library)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React project that demonstrates how to build your own custom page navigation system — similar to React Router — using only React state and conditional rendering.
 
-Currently, two official plugins are available:
+This project switches between different pages (Page1, Page2, Page3) without reloading the browser and without using any routing libraries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
 
-## React Compiler
+🧩 Custom page routing using useState
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⚡ Instant navigation without full page reloads
 
-## Expanding the ESLint configuration
+🖱️ Button-based page switching
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+💡 Acts like a simplified version of React Router
+
+📄 Clean and minimal React codebase
+
+🏗️ Project Structure
+📁 src/
+ ┣ 📁 components/
+ ┃ ┣ 📄 Page1.jsx
+ ┃ ┣ 📄 Page2.jsx
+ ┃ ┗ 📄 Page3.jsx
+ ┣ 📄 App.jsx
+ ┣ 📄 App.css
+ ┗ 📄 main.jsx
+
+💻 How It Works
+
+The app stores a list of pages in an array and dynamically renders the selected component based on the current state.
+
+const pages = [
+  { id: 1, body: <Page1 /> },
+  { id: 2, body: <Page2 /> },
+  { id: 3, body: <Page3 /> },
+];
+
+const [currentPage, setCurrentPage] = useState(0);
+
+return (
+  <>
+    <button onClick={() => setCurrentPage(0)}>Page 1</button>
+    <button onClick={() => setCurrentPage(1)}>Page 2</button>
+    <button onClick={() => setCurrentPage(2)}>Page 3</button>
+
+    {pages[currentPage].body}
+  </>
+);
+
+
+🧠 This logic mimics the way routing works:
+
+Instead of URL changes, you store the current page index in state.
+
+Clicking a button updates the state (setCurrentPage), and React re-renders that page.
+
+The transition happens instantly without refreshing the entire page.
+
+🛠️ Technologies Used
+
+React.js (Vite Setup)
+
+JavaScript (ES6+)
+
+CSS3 for basic styling
+
+⚙️ Setup and Run
+
+Clone the repository
+
+git clone https://github.com/your-username/custom-react-router.git
+cd custom-react-router
+
+
+Install dependencies
+
+npm install
+
+
+Run the app
+
+npm run dev
+
+
+Open the link shown in the terminal (usually http://localhost:5173)
+
+🧩 Future Enhancements
+
+Add URL-based routing with window.history.pushState()
+
+Add a “Back” and “Forward” button functionality
+
+Highlight the active page button
+
+Animate page transitions
+
+Convert into a reusable <CustomRouter> component
